@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Logowanie</title>
+        <meta charset="UTF-8">
+        <script type="importmap">
+            {
+              "imports": {
+                "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+              }
+            }
+        </script>
+    <body> 
+
+        <div id="apka">
+          <div>
+            <h1>{{message}}</h1><br>
+            użytkownik<br>
+            <input v-model="user"><br>
+            hasło<br>
+            <input v-model="password" type="password"><br><br>
+            <button @click="login" >Zaloguj</button>
+          </div>
+        </div>
+
+        <script type="module">
+          import { createApp } from 'vue'
+
+          createApp({
+            data() {
+              return {
+                message: 'Logowanie',
+                user: "",
+                password: "",
+              }
+            },
+            methods: {
+              login() {
+                console.log("Zaloguj: " + this.user + " " + this.password);
+                //TODO haslo md5 i ajax do serwera
+              }
+            }
+          }).mount('#apka')
+        </script>
+
+    </body>
+</html>
