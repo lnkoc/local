@@ -18,8 +18,6 @@ export default {
     // stworzyć formę i nadpisać wysyłanie przyciskiem
     // uzupełnić szablon
     // wysyłanie formy na serwer
-
-    }
   },
   template: `
     Nazwa użytkownika: <input v-model="nick"><br>
