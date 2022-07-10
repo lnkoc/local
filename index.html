@@ -11,37 +11,64 @@
               }
             }
         </script>
-    <body> 
+    <body>
 
         <div id="apka">
-          <div>
-            <h1>{{message}}</h1><br>
-            użytkownik<br>
-            <input v-model="user"><br>
-            hasło<br>
-            <input v-model="password" type="password"><br><br>
-            <button @click="login" >Zaloguj</button>
+
+            <div v-if=!create>
+              <h1>Logowanie</h1><br>
+              Użytkownik<br>
+              <input v-model="user"><br>
+              Hasło<br>
+              <input v-model="password" type="password"><br><br>
+              <button @click="login" >Zaloguj</button>
+              <br>
+              <h2>Utwórz konto:</h2>
+              <button @click="openRegistration">Rejestracja</button><br>
+            </div>
+
+            <div v-if=create>
+              <Registration />
+
+            </div>
+
+          <div id="status">
           </div>
         </div>
 
         <script type="module">
-          import { createApp } from 'vue'
 
-          createApp({
+          import { createApp } from 'vue'
+          import registration from './registration.js'
+
+          const app = createApp({
             data() {
               return {
-                message: 'Logowanie',
                 user: "",
                 password: "",
+                create: false,
               }
             },
             methods: {
               login() {
-                console.log("Zaloguj: " + this.user + " " + this.password);
-                //TODO haslo md5 i ajax do serwera
+//TODO haslo md5
+// dopisać obsługę niepoprawnego loginu lub hasła
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                  document.getElementById("status").innerHTML = this.responseText;
+                }
+                xhttp.open("GET", "login.php?login=" + this.user + "&pass=" + this.password, true);
+                xhttp.send();
+              },
+              openRegistration() {
+                this.create = true;
+
               }
             }
-          }).mount('#apka')
+
+          }).component('Registration', registration).mount('#apka')
+
         </script>
 
     </body>
