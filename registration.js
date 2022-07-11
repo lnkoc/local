@@ -1,37 +1,72 @@
 export default {
-  data() {
-    return {
-      nick: "",
+  data(){
+    return{
+      login: "",
       pass: "",
       pass2: "",
       name: "",
       surname: "",
       email: "",
-      type: "",
       organisation: "",
-      licence: "",
       phone: "",
+
+      loginWarning: "",
+    }
+  },
+  methods: {
+    send(e){
+      e.preventDefault();
     }
   },
   watch: {
-    //TODO dopisać walidację elementów
-    // stworzyć formę i nadpisać wysyłanie przyciskiem
-    // uzupełnić szablon
-    // wysyłanie formy na serwer
+    login(newLogin, oldLogin){
+      if (newLogin.length <= 3) {
+        this.loginWarning = "Za krótki login. Podaj minimum 3 znaki.";
+      }
+      else {
+        const xhttp = new XMLHttpRequest();
+        let self = this;
+        xhttp.onload = function() {
+          if (this.responseText == "true") {
+            self.loginWarning = "Wybrana nazwa użytkownika już istnieje, wybierz inną.";
+          }
+      //    self.loginWarning = this.responseText;
+        }
+        xhttp.open("GET", "checkLogin.php?" + newLogin);
+        xhttp.send();
+
+      }
+    },
   },
-  template: `
-    Nazwa użytkownika: <input v-model="nick"><br>
+  template:`
+  <h1>Utwórz konto</h1>
+  <form>
+    Nazwa użytkownika*:<br>
+    <input v-model="login" maxlength="20"><br>{{loginWarning}}<br>
 
-    Hasło: <input v-model="pass"><br>
-    Powtórz hasło: <input v-model="pass2"><br>
+    Hasło*:<br>
+    <input v-model="pass" type="password" maxlength="20"><br>
 
-    Typ konta:
-  <br>
-    Imię: <input v-model="name"><br>
-    Nazwisko: <input v-model="surname"><br>
-    e-mail: <input v-model="email"><br>
-    Aeroklub/Organizacja/Stoważyszenie: <input v-model="organisation"><br>
-    Numer licencji: <input v-model="licence"><br>
-    telefon: <input v-model="phone"><br>
+    Powtórz hasło*:<br>
+    <input v-model="pass2" type="password" maxlength="20"><br>
+
+    Imię*:<br>
+    <input v-model="name" maxlength="20"><br>
+
+    Nazwisko*:<br>
+    <input v-model="surname" maxlength="25"><br>
+
+    e-mail*:<br>
+    <input v-model="email" maxlength="254"><br>
+
+    Aeroklub/Organizacja<br>
+    <textarea v-model="organisation" maxlength="255"></textarea><br>
+
+    telefon:<br>
+    <input v-model="phone" maxlength="15"><br>
+
+    <br>
+    <button @click="send">Wyślij</button>
+  </form>
   `
 }

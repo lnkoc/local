@@ -12,7 +12,6 @@
             }
         </script>
     <body>
-
         <div id="apka">
 
             <div v-if=!create>
@@ -28,7 +27,8 @@
             </div>
 
             <div v-if=create>
-              <Registration />
+              <add-user></add-user>
+              <!-- <Registration /> -->
 
             </div>
 
@@ -39,7 +39,7 @@
         <script type="module">
 
           import { createApp } from 'vue'
-          import registration from './registration.js'
+          import reg from './registration.js'
 
           const app = createApp({
             data() {
@@ -67,7 +67,9 @@
               }
             }
 
-          }).component('Registration', registration).mount('#apka')
+          })
+          .component('add-user', reg)
+          .mount('#apka');
 
         </script>
 
