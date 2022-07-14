@@ -1,5 +1,5 @@
 export default {
-  data(){
+  data() {
     return{
       login: "",
       pass: "",
@@ -20,14 +20,15 @@ export default {
     }
   },
   methods: {
-    send(e){
-      e.preventDefault();
+    send() {
       if (!(this.loginWarning ||
         this.passWarning ||
         this.pass2Warning ||
         this.nameWarning ||
         this.surnameWarning ||
-        this.emailWarning)) {
+        this.emailWarning) &&
+        (window.sessionStorage.getItem("registration"))) {
+          window.sessionStorage.clear();
           let data = {login: this.login,
                       pass: this.pass,
                       name: this.name,
@@ -41,10 +42,11 @@ export default {
           xhttp.open("POST", "registration.php", true);
           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xhttp.send(obJson);
+          this.$emit("created");
+          //// TODO: dopisać obsługę prejścia do strony głównej po wysłąniu
         }
         else {
-          //TODO
-          console.log("popraw dane w formularzu");
+          console.log("nie można dodać użytkownika");
         }
       }
     },
@@ -53,7 +55,6 @@ export default {
     login(newLogin, oldLogin) {
       if (newLogin.length < 4) {
         this.loginWarning = "Minimum 4 znaki";
-
       }
       else {
         const xhttp = new XMLHttpRequest();
@@ -160,7 +161,7 @@ export default {
 
       <br>
       * Pola obowiązkowe.<br><br>
-      <input type="submit" @click="send">
+      <input type="submit" @click.prevent="send">
     </form>
   </div>
   `

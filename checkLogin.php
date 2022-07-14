@@ -4,7 +4,7 @@ $q = $_REQUEST["q"];
 
 $servername = "localhost";
 $username = "lnkoc";
-$password = "password";
+$password = "lnkoc";
 $dbname = "sozdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,7 +27,6 @@ foreach ($logins as $key) {
 }
 
 echo $response;
-
 
 $result->free_result();
 $conn->close();

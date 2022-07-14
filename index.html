@@ -28,7 +28,7 @@
             </div>
 
             <div v-if=create>
-              <add-user></add-user>
+              <add-user @created="create=false"></add-user>
             </div>
 
           <div id="status">
@@ -50,8 +50,8 @@
             },
             methods: {
               login() {
-//TODO haslo md5
-// dopisać obsługę niepoprawnego loginu lub hasła
+              //TODO haslo md5
+              // dopisać obsługę niepoprawnego loginu lub hasła
 
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function() {
@@ -61,6 +61,7 @@
                 xhttp.send();
               },
               openRegistration() {
+                window.sessionStorage.setItem("registration", "true");
                 this.create = true;
               }
             }
