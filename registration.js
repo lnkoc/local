@@ -43,7 +43,7 @@ export default {
           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xhttp.send(obJson);
           this.$emit("created");
-          //// TODO: dopisać obsługę prejścia do strony głównej po wysłąniu
+          //// TODO: dopsiac przycisk anuluj
         }
         else {
           console.log("nie można dodać użytkownika");

@@ -15,7 +15,7 @@ if($conn->connect_error) {
 $sql = "SELECT LOGIN FROM ORGANIZATOR;";
 $result = $conn->query($sql);
 
-while($row = $result->fetch_assoc()) {
+while ($row = $result->fetch_assoc()) {
     $logins[] = $row["LOGIN"];
 }
 

@@ -15,23 +15,25 @@
     <body>
         <div id="apka">
 
-            <div v-if=!create>
+            <div v-if="!logIn">
               <h1>Logowanie</h1><br>
               Użytkownik<br>
-              <input v-model="user"><br>
+              <input v-model="user"> {{userHint}}<br>
               Hasło<br>
-              <input v-model="password" type="password"><br><br>
+              <input v-model="password" type="password"> {{passHint}}<br><br>
               <button @click="login" >Zaloguj</button>
-              <br>
-              <h2>Utwórz konto:</h2>
+            </div>
+
+            <div v-if="!create && !logIn">
+              <h1>Utwórz konto:</h1>
               <button @click="openRegistration">Rejestracja</button><br>
             </div>
 
             <div v-if=create>
-              <add-user @created="create=false"></add-user>
+              <add-user @created="create=false; logIn=false"></add-user>
             </div>
 
-          <div id="status">
+          <div id="content">
           </div>
         </div>
 
@@ -45,22 +47,44 @@
               return {
                 user: "",
                 password: "",
+                userHint: "",
+                passHint: "",
                 create: false,
+                logIn: false,
               }
             },
             methods: {
               login() {
               //TODO haslo md5
-              // dopisać obsługę niepoprawnego loginu lub hasła
 
+                let self = this;
                 const xhttp = new XMLHttpRequest();
                 xhttp.onload = function() {
-                  document.getElementById("status").innerHTML = this.responseText;
+                  let resp = JSON.parse(this.responseText);
+                  if (!resp.loginCheck) {
+                    self.userHint = "Niepoprawny login";
+                  }
+                  else {
+                    self.userHint = "";
+                    if (!resp.passCheck) {
+                      self.passHint = "Niepoprawne hasło";
+                    }
+                    else {
+                      self.passHint = "";
+                      self.logIn = true;
+                      window.sessionStorage.setItem("token", resp.token);
+
+                      console.log("A teraz dalszy ciąg programu...");
+
+                      window.sessionStorage.clear();
+                    }
+                  }
                 }
                 xhttp.open("GET", "login.php?login=" + this.user + "&pass=" + this.password, true);
                 xhttp.send();
               },
               openRegistration() {
+                this.logIn = true;
                 window.sessionStorage.setItem("registration", "true");
                 this.create = true;
               }
