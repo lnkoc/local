@@ -5,7 +5,15 @@ body {
 #content {
   width: 100%;
   height: auto;
-  border: 2px solid red;
+  border: 2px solid blue;
+  padding-top: 50px;
+}
+
+.menuItems {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+
 }
 /* .reg{
   width: 300px;

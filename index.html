@@ -14,33 +14,38 @@
         <link rel="stylesheet" href="styles.css">
     <body>
         <div id="apka">
-
-            <div v-if="!logIn">
+          <div v-if="!logged && !create">
+            <div>
               <h1>Logowanie</h1><br>
-              Użytkownik<br>
+              Użytkownik:<br>
               <input v-model="user"> {{userHint}}<br>
-              Hasło<br>
+              Hasło:<br>
               <input v-model="password" type="password"> {{passHint}}<br><br>
               <button @click="login" >Zaloguj</button>
             </div>
 
-            <div v-if="!create && !logIn">
+            <div>
               <h1>Utwórz konto:</h1>
               <button @click="openRegistration">Rejestracja</button><br>
             </div>
+          </div>
 
-            <div v-if=create>
-              <add-user @created="create=false; logIn=false"></add-user>
+            <div v-if="create">
+              <add-user @created="create=false; logged=false"></add-user>
             </div>
 
-          <div id="content">
-          </div>
+            <div id="content" v-if="logged">
+              <menu-buttons @logout="logged=false"></menu-buttons>
+            </div>
+
         </div>
 
         <script type="module">
 
           import { createApp } from 'vue'
           import reg from './registration.js'
+          import menuButtons from './menu.js'
+          import addEvent from './addevents.js'
 
           const app = createApp({
             data() {
@@ -50,7 +55,7 @@
                 userHint: "",
                 passHint: "",
                 create: false,
-                logIn: false,
+                logged: false,
               }
             },
             methods: {
@@ -71,12 +76,12 @@
                     }
                     else {
                       self.passHint = "";
-                      self.logIn = true;
                       window.sessionStorage.setItem("token", resp.token);
-
+                      window.sessionStorage.setItem("login", self.user);
+                      self.logged = true;
+                      self.user = "";
+                      self.password = "";
                       console.log("A teraz dalszy ciąg programu...");
-
-                      window.sessionStorage.clear();
                     }
                   }
                 }
@@ -84,7 +89,6 @@
                 xhttp.send();
               },
               openRegistration() {
-                this.logIn = true;
                 window.sessionStorage.setItem("registration", "true");
                 this.create = true;
               }
@@ -92,6 +96,8 @@
 
           })
           .component('add-user', reg)
+          .component('menu-buttons', menuButtons)
+          .component('add-event', addEvent)
           .mount('#apka');
 
         </script>

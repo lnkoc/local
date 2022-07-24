@@ -33,7 +33,8 @@ $loginObj->passCheck = $correctPass;
 
 if ($correctLogin && $correctPass) {
   $loginObj->token = $login . date("Y-m-d");
-  $sql2 = "INSERT INTO SESJA (LOGIN, TOKEN, DATA_UTWORZENIA) VALUES ('" . $login . "', '" . $loginObj->token . "', '" . date("Y-m-d") . "');";
+  $sql2 = "INSERT INTO SESJA (LOGIN, TOKEN, DATA_UTWORZENIA)
+  VALUES ('" . $login . "', '" . $loginObj->token . "', '" . date("Y-m-d") . "');";
   $conn->query($sql2);
 }
 else {
