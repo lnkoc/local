@@ -39,9 +39,20 @@ if($logged) {
   while($row = $result3->fetch_assoc()) {
     array_push($allCats, $row["NAZWA"]);
   }
-
   $resOb["categories"] = $allCats;
 
+  $sql4 = "SELECT KLASA.NAZWA FROM WYDARZENIE_KLASA, KLASA, REJESTRACJA, UZYTKOWNIK
+  WHERE UZYTKOWNIK.LOGIN = '" . $login . "' AND UZYTKOWNIK.UZYTKOWNIK_ID = REJESTRACJA.UZYTKOWNIK_ID
+  AND WYDARZENIE_KLASA.WYDARZENIE_ID = '" . $data . "' AND REJESTRACJA.WYDARZENIE_KLASA_ID = WYDARZENIE_KLASA.WYDARZENIE_KLASA_ID
+  AND WYDARZENIE_KLASA.KLASA_ID = KLASA.KLASA_ID;";
+
+  $regCats = array();
+  $result4 = $conn->query($sql4);
+  while($row = $result4->fetch_assoc()) {
+    array_push($regCats, $row["NAZWA"]);
+  }
+  $resOb["registired"] = $regCats;
+  
   echo json_encode($resOb);
 }
 else {
