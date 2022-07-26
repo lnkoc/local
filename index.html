@@ -14,38 +14,44 @@
         <link rel="stylesheet" href="styles.css">
     <body>
         <div id="apka">
-          <div v-if="!logged && !create">
+
+          <div class="admin" v-if="!logged && !createUser">
+            <button v-if="!enableAdminPanel" @click="openAdminPanel">Panel Organizatora</button>
+            <admin-panel v-if="enableAdminPanel" @logout="disableAdminPanel"></admin-panel><br>
+          </div>
+
+          <div v-if="!logged && !createUser && !enableAdminPanel">
             <div>
-              <h1>Logowanie</h1><br>
-              Użytkownik:<br>
+              <h1>Logowanie zawodnika</h1><br>
+              Zawodnik:<br>
               <input v-model="user"> {{userHint}}<br>
               Hasło:<br>
               <input v-model="password" type="password"> {{passHint}}<br><br>
-              <button @click="login" >Zaloguj</button>
+              <button @click="userLogin">Zaloguj</button>
             </div>
 
             <div>
-              <h1>Utwórz konto:</h1>
-              <button @click="openRegistration">Rejestracja</button><br>
+              <h1>Utwórz konto zawodnika</h1>
+              <button @click="openUserRegistration">Rejestracja zawodnika</button><br>
             </div>
           </div>
 
-            <div v-if="create">
-              <add-user @created="create=false; logged=false"></add-user>
-            </div>
+          <div v-if="createUser">
+            <add-user @created="createUser=false; logged=false"></add-user>
+          </div>
 
-            <div id="content" v-if="logged">
-              <menu-buttons @logout="logged=false"></menu-buttons>
-            </div>
+          <div id="content" v-if="logged">
+            <users-menu @logout="logout"></users-menu>
+          </div>
 
         </div>
 
         <script type="module">
 
           import { createApp } from 'vue'
-          import reg from './registration.js'
-          import menuButtons from './menu.js'
-          import addEvent from './addevents.js'
+          import adminPanel from './adminPanel.js'
+          import userReg from './userRegistration.js'
+          import usersMenu from './usersMenu.js'
 
           const app = createApp({
             data() {
@@ -54,12 +60,13 @@
                 password: "",
                 userHint: "",
                 passHint: "",
-                create: false,
+                createUser: false,
                 logged: false,
+                enableAdminPanel: false
               }
             },
             methods: {
-              login() {
+              userLogin() {
               //TODO haslo md5
 
                 let self = this;
@@ -85,19 +92,28 @@
                     }
                   }
                 }
-                xhttp.open("GET", "login.php?login=" + this.user + "&pass=" + this.password, true);
+                xhttp.open("GET", "userLogin.php?login=" + this.user + "&pass=" + this.password, true);
                 xhttp.send();
               },
-              openRegistration() {
+              openUserRegistration() {
                 window.sessionStorage.setItem("registration", "true");
-                this.create = true;
+                this.createUser = true;
+              },
+              openAdminPanel() {
+                this.enableAdminPanel = true;
+              },
+              disableAdminPanel() {
+                this.enableAdminPanel = false;
+              },
+              logout() {
+                this.logged = false;
               }
             }
 
           })
-          .component('add-user', reg)
-          .component('menu-buttons', menuButtons)
-          .component('add-event', addEvent)
+          .component('admin-panel', adminPanel)
+          .component('add-user', userReg)
+          .component('users-menu', usersMenu)
           .mount('#apka');
 
         </script>

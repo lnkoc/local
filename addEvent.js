@@ -57,7 +57,7 @@ export default {
             }
           }
         }
-        xhttp.open("POST", "addEvents.php", true);
+        xhttp.open("POST", "addEvent.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(obJson);
 
@@ -66,6 +66,7 @@ export default {
       }
       else {
         //TODO dpisać czego brakuje
+        //TODO DOPISAĆ PRZYCISK ANULUJ
         console.log("rejestracja wstrzymana");
       }
     }
@@ -73,7 +74,7 @@ export default {
   },
   mounted() {
     let self = this;
-    let xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
       if (this.responseText == "false") {
         console.log("Sesja wygasła.");
@@ -83,7 +84,7 @@ export default {
         console.log(self.availableCats);
       }
     }
-    xhttp.open("GET", "getCats.php?q=" + window.sessionStorage.getItem("token"));
+    xhttp.open("GET", "getCats.php?q=" + window.sessionStorage.getItem("token"), true);
     xhttp.send();
   },
   watch: {

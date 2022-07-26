@@ -8,21 +8,21 @@ $password = "lnkoc";
 $dbname = "sozdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-  die("Brak połączenia z bazą danych ". $conn->connect_error);
+if($conn->connect_error) {
+  die("Błąd połączenia z bazą danych " . $conn->connect_error);
 }
 
-$sql = "SELECT login, haslo FROM ORGANIZATOR;";
+$sql = "SELECT LOGIN, HASLO FROM UZYTKOWNIK;";
+
 $result = $conn->query($sql);
 
 $correctLogin = false;
 $correctPass = false;
 
-while ($row = $result->fetch_assoc()) {
-  if (!strcmp($row["login"], $login)) {
+while($row = $result->fetch_assoc()) {
+  if(!strcmp($row["LOGIN"], $login)) {
     $correctLogin = true;
-    if (!strcmp($row["haslo"], $pass)) {
+    if(!strcmp($row["HASLO"], $pass)) {
       $correctPass = true;
     }
   }
@@ -31,16 +31,15 @@ while ($row = $result->fetch_assoc()) {
 $loginObj->loginCheck = $correctLogin;
 $loginObj->passCheck = $correctPass;
 
-if ($correctLogin && $correctPass) {
-  $loginObj->token = $login . date("Y-m-d");
+if($correctLogin && $correctPass) {
+  $loginObj->token = $login . date("d-m-Y");
   $sql2 = "INSERT INTO SESJA (LOGIN, TOKEN, DATA_UTWORZENIA)
   VALUES ('" . $login . "', '" . $loginObj->token . "', '" . date("Y-m-d") . "');";
   $conn->query($sql2);
 }
 else {
-  $loginObj->token = "";
+  $loginObj->token= "";
 }
-
 $loginJson = json_encode($loginObj);
 echo $loginJson;
 $conn->close();

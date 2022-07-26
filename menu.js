@@ -1,7 +1,15 @@
+import addEvent from './addEvent.js'
+import showEventsList from './showEventsList.js'
+
 export default {
+  components: {
+    addEvent,
+    showEventsList
+  },
   data() {
     return {
       showAddEventForm: false,
+      showEventsList: false,
     }
   },
   emits:['logout'],
@@ -10,6 +18,9 @@ export default {
       this.showAddEventForm = true;
     },
     showList() {
+      this.showEventsList = true;
+    },
+    showClosedList() {
 
     },
     myAccount() {
@@ -27,12 +38,14 @@ export default {
   template:`
     <div class="menuItems">
       <button @click="addEvent">Dodaj wydarzenie</button>
-      <button @click="showList">Moje wydarzenia</button>
+      <button @click="showList">Aktywne wydarzenia</button>
+      <button @click="showClosedList">Zamknięte wydarzenia</button>
       <button @click="myAccount">Moje konto</button>
       <button @click="logOut">Wyloguj</button>
     </div>
     <div class="main">
-      <add-event v-if="showAddEventForm" @eventCreated="created"></add-event>
+      <addEvent v-if="showAddEventForm" @eventCreated="created"></addEvent>
+      <showEventsList v-if="showEventsList"></showEventsList>
     </div>
   `
 }

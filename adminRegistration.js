@@ -46,7 +46,7 @@ export default {
               }
             }
           };
-          xhttp.open("POST", "registration.php", true);
+          xhttp.open("POST", "adminRegistration.php", true);
           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           xhttp.send(obJson);
           this.$emit("created");
@@ -140,7 +140,7 @@ export default {
   },
   template:`
   <div class="reg">
-    <h1>Utwórz konto</h1>
+    <h1>Twoje dane organizatora</h1>
     <form>
       Nazwa użytkownika*:<br>
       <input v-model="login" maxlength="20" id="login"> <label for="login">{{loginWarning}}</label>

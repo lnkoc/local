@@ -31,7 +31,7 @@ if ($logged) {
     $resultId = $conn->query($sql2);
     $userId = $resultId->fetch_assoc();
 
-    $sql3 = "INSERT INTO WYDARZENIE_DANE(NAZWA, MIEJSCE, INFO, DATA_START, TIME_START, DATA_STOP_REGISTRATION, TIME_STOP_REGISTRATION, ORGANIZATOR_ID)
+    $sql3 = "INSERT INTO WYDARZENIE_DANE(NAZWA, MIEJSCE, INFO, DATA_START, CZAS_START, DATA_STOP_REJESTRACJA, CZAS_STOP_REJESTRACJA, ORGANIZATOR_ID)
       VALUES ('"
         . $data->eventName . "','"
         . $data->place . "','"
