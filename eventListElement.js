@@ -1,15 +1,32 @@
+import eventElementDetails from "./eventElementDetails.js"
 export default {
+  components: {
+    eventElementDetails
+  },
   data() {
     return {
-
+      showDetails: false
     }
   },
-  props: ["eventId", "eventName", "place", "dateStart", "timeStart", "name", "surname", "dateStopRegistration", "timeStopRegistration"],
+  methods: {
+    openEvent(){
+      this.showDetails = true;
+    },
+    hideEvent() {
+      this.showDetails = false;
+    }
+  },
+  props: ["eventId", "eventName", "place", "dateStart", "timeStart", "name", "surname",
+    "organisation", "dateStopRegistration", "timeStopRegistration"],
   template: `
     <div class="event">
       {{eventName}}<br>
-      Miejsce: {{place}} <br>
-      Organizator: {{name}} {{surname}} <br>
-    </div>
+      Miejsce: {{place}} Rozpoczęcie: {{dateStart}} {{timeStart}}<br>
+      Koniec rejstracji: {{dateStopRegistration}} {{timeStopRegistration}}<br>
+      Organizator: {{name}} {{surname}}, {{organisation}}<br>
+      <button v-if="!showDetails" @click="openEvent">Rozwiń szczegóły</button>
+      <eventElementDetails v-if="showDetails" :eventId="eventId"></eventElementDetails><br>
+      <button v-if="showDetails" @click="hideEvent">Zwiń szczegóły</button>
+    </div><br>
   `
 }

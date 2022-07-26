@@ -37,6 +37,7 @@ export default {
     :timeStart = "item.timeStart"
     :name = "item.name"
     :surname = "item.surname"
+    :organisation = "item.organisation"
     :dateStopRegistration = "item.dateStopRegistration"
     :timeStopRegistration = "item.timeStopRegistration"
 
