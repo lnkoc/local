@@ -25,7 +25,7 @@ export default {
 
   },
   template: `
-    <h2>Moje wydarzenia</h2>
+    <h2>Moje aktywne wydarzenia</h2>
     <listElement
       v-for="item in list"
       :eventId="item.eventId"

@@ -61,11 +61,10 @@ export default {
     <div>
     e-mail: {{email}} <br>
       <div v-if="phone">Telefon: {{phone}}</div>
-      Informacje: {{info}}<br>
-      <div v-for="item in registired"> Zarejestrowano w {{item}}
+      Informacje: {{info}}<br><br>
+      <div v-for="item in registired"> Zarejestrowano w kategorii {{item}}
       </div><br>
-      Zarejestruj w klasie:<br>
-      <button v-for="item in categories" v-on:click="register(item)">{{item}}</button>
+      <button v-for="item in categories" v-on:click="register(item)">Zarejestruj w kategorii {{item}}</button>
     </div>
     {{err}}
   `

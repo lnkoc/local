@@ -10,15 +10,16 @@ export default {
     return {
       showAddEventForm: false,
       showEventsList: false,
+      currentMenuItem: "showEventsList"
     }
   },
   emits:['logout'],
   methods: {
     addEvent() {
-      this.showAddEventForm = true;
+      this.currentMenuItem = "addEvent";
     },
     showList() {
-      this.showEventsList = true;
+      this.currentMenuItem = "showEventsList";
     },
     showClosedList() {
 
@@ -44,8 +45,7 @@ export default {
       <button @click="logOut">Wyloguj</button>
     </div>
     <div class="main">
-      <addEvent v-if="showAddEventForm" @eventCreated="created"></addEvent>
-      <showEventsList v-if="showEventsList"></showEventsList>
+      <component :is="currentMenuItem"></component>
     </div>
   `
 }

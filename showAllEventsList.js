@@ -19,7 +19,7 @@ export default {
       }
       else {
         self.list = JSON.parse(this.responseText);
-        self.err = JSON.parse(this.responseText);
+  //      self.err = JSON.parse(this.responseText);
   //      console.log(this.responseText);
       }
     }
@@ -28,7 +28,7 @@ export default {
 
   },
   template:`
-  <h1>Dostępne wydarzenia</h1><br>
+  <h1>Aktualne wydarzenia</h1><br>
   <eventListElement v-for="item in list"
     :eventId = "item.eventId"
     :eventName = "item.eventName"

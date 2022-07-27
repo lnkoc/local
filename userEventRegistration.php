@@ -36,7 +36,6 @@ if($logged) {
   $event->eventClassId = $row["WYDARZENIE_KLASA_ID"];
 
   $sql4 = "INSERT INTO REJESTRACJA(WYDARZENIE_KLASA_ID, UZYTKOWNIK_ID) VALUES ('" . $event->eventClassId . "', '" . $event->userId . "');";
-  // echo $sql4;
   $conn->query($sql4);
 }
 else {

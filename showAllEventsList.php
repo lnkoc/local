@@ -35,16 +35,16 @@ if($logged) {
   $obArray = array();
 
   while($row = $result2->fetch_assoc()) {
-    $rowArr["eventId"] = utf8_encode($row["WYDARZENIE_ID"]);
-    $rowArr["eventName"] = utf8_encode($row["NAZWA"]);
-    $rowArr["place"] = utf8_encode($row["MIEJSCE"]);
-    $rowArr["dateStart"] = utf8_encode($row["DATA_START"]);
-    $rowArr["timeStart"] = utf8_encode($row["CZAS_START"]);
-    $rowArr["name"] = utf8_encode($row["IMIE"]);
-    $rowArr["surname"] = utf8_encode($row["NAZWISKO"]);
-    $rowArr["organisation"] = utf8_encode($row["ORGANIZACJA"]);
-    $rowArr["dateStopRegistration"] = utf8_encode($row["DATA_STOP_REJESTRACJA"]);
-    $rowArr["timeStopRegistration"] = utf8_encode($row["CZAS_STOP_REJESTRACJA"]);
+    $rowArr["eventId"] = $row["WYDARZENIE_ID"];
+    $rowArr["eventName"] = $row["NAZWA"];
+    $rowArr["place"] = $row["MIEJSCE"];
+    $rowArr["dateStart"] = $row["DATA_START"];
+    $rowArr["timeStart"] = $row["CZAS_START"];
+    $rowArr["name"] = $row["IMIE"];
+    $rowArr["surname"] = $row["NAZWISKO"];
+    $rowArr["organisation"] = $row["ORGANIZACJA"];
+    $rowArr["dateStopRegistration"] = $row["DATA_STOP_REJESTRACJA"];
+    $rowArr["timeStopRegistration"] = $row["CZAS_STOP_REJESTRACJA"];
     array_push($obArray, $rowArr);
   }
   $obJson = json_encode($obArray);
