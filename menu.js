@@ -1,10 +1,12 @@
 import addEvent from './addEvent.js'
 import showEventsList from './showEventsList.js'
+import showClosedEventsList from './showClosedEventsList.js'
 
 export default {
   components: {
     addEvent,
-    showEventsList
+    showEventsList,
+    showClosedEventsList
   },
   data() {
     return {
@@ -22,7 +24,7 @@ export default {
       this.currentMenuItem = "showEventsList";
     },
     showClosedList() {
-
+      this.currentMenuItem = "showClosedEventsList"
     },
     myAccount() {
 
@@ -39,8 +41,8 @@ export default {
   template:`
     <div class="menuItems">
       <button @click="addEvent">Dodaj wydarzenie</button>
-      <button @click="showList">Aktywne wydarzenia</button>
-      <button @click="showClosedList">Zamknięte wydarzenia</button>
+      <button @click="showList">Otwarte rejestracje</button>
+      <button @click="showClosedList">Zamknięte rejestracje</button>
       <button @click="myAccount">Moje konto</button>
       <button @click="logOut">Wyloguj</button>
     </div>

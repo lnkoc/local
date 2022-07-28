@@ -25,13 +25,20 @@ export default {
 
   },
   template: `
-    <h2>Moje aktywne wydarzenia</h2>
-    <listElement
-      v-for="item in list"
-      :eventId="item.eventId"
-      :eventName="item.eventName"
-      :dateStop="item.dateStop"
-      :timeStop="item.timeStop">
-    </listElement>
+    <h2>Otwarte rejestracje</h2>
+    <div v-for="item in list">
+      <div class="event">
+        {{item.eventName}}<br>
+        Koniec rejestracji: {{item.dateStop}} {{item.timeStop}} <br>
+        <listElement
+          :eventId="item.eventId"
+          :eventName="item.eventName"
+          :dateStop="item.dateStop"
+          :timeStop="item.timeStop">
+        </listElement>
+      </div>
+      <br>
+    </div>
+
   `
 }
