@@ -1,12 +1,14 @@
 import addEvent from './addEvent.js'
 import showEventsList from './showEventsList.js'
 import showClosedEventsList from './showClosedEventsList.js'
+import showMyAccount from './showMyAccount.js'
 
 export default {
   components: {
     addEvent,
     showEventsList,
-    showClosedEventsList
+    showClosedEventsList,
+    showMyAccount
   },
   data() {
     return {
@@ -24,10 +26,10 @@ export default {
       this.currentMenuItem = "showEventsList";
     },
     showClosedList() {
-      this.currentMenuItem = "showClosedEventsList"
+      this.currentMenuItem = "showClosedEventsList";
     },
     myAccount() {
-
+      this.currentMenuItem = "showMyAccount";
     },
     logOut() {
       window.sessionStorage.clear();

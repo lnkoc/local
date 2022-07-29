@@ -51,8 +51,6 @@ export default {
   template:`
   <div>
     <div>
-      {{eventName}} <br>
-
       <button v-if="!showElement" @click="openEvent">Rozwiń</button><br>
     </div>
     <div v-if="showElement">

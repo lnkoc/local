@@ -18,7 +18,6 @@ export default {
       }
       else {
         self.list = JSON.parse(this.responseText);
-    //    self.err = this.responseText;
       }
     }
     xhttp.open("GET", "getClosedEventsList.php?q=" + window.sessionStorage.getItem("token"), true);
