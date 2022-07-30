@@ -119,35 +119,38 @@ export default {
   },
   template:`
   <div>
+  <h2>Dodaj nowe wydarzenie</h2>
     <form>
-      <h2>Nazwa wydarzenia:</h2>
-      <textarea v-model="eventName" maxlength="500"></textarea><br>
-      {{nameWarning}}<br>
+      <fieldset>
+        <h2>Nazwa wydarzenia:</h2>
+        <textarea v-model="eventName" maxlength="500"></textarea><br>
+        {{nameWarning}}<br>
 
-      <h2>Miejsce:</h2>
-      <textarea v-model="place" maxlength="500"></textarea><br>
-      {{placeWarning}}<br>
+        <h2>Miejsce:</h2>
+        <textarea v-model="place" maxlength="500"></textarea><br>
+        {{placeWarning}}<br>
 
-      <h2>Kategorie:</h2>
-      <template v-for="item in availableCats">
-        <input v-model="selectedCats" type="checkbox" :value="item" id="item">
-        <label for id="item">{{item}}</label>
-      </template>
-      <br>
-      {{selectedCatsWarning}}
-      <br>
+        <h2>Kategorie:</h2>
+        <template v-for="item in availableCats">
+          <input v-model="selectedCats" type="checkbox" :value="item" id="item">
+          <label for id="item">{{item}}</label>
+        </template>
+        <br>
+        {{selectedCatsWarning}}
+        <br>
 
-      <h2>Dodatkowe informacje:</h2>
-      <textarea v-model="description" maxlength="500"></textarea><br>
-      {{descriptionWarning}}<br>
+        <h2>Dodatkowe informacje:</h2>
+        <textarea v-model="description" maxlength="500"></textarea><br>
+        {{descriptionWarning}}<br>
 
-      <h2>Data i godzina rozpoczęcia wydarzenia:</h2>
-      <input v-model="dateStart" type="date"> <input v-model="timeStart" type="time"><br>
+        <h2>Data i godzina rozpoczęcia wydarzenia:</h2>
+        <input v-model="dateStart" type="date"> <input v-model="timeStart" type="time"><br>
 
-      <h2>Zakończenie rejestracji:</h2>
-      <input v-model="dateStopRegistration" type="date"> <input v-model="timeStopRegistration" type="time"><br>
-      <br>
-      <input type="submit" @click.prevent="addEvent">
+        <h2>Zakończenie rejestracji:</h2>
+        <input v-model="dateStopRegistration" type="date"> <input v-model="timeStopRegistration" type="time"><br>
+        <br>
+        <input type="submit" @click.prevent="addEvent">
+      </fieldset>
     </form>
     <br>
     {{err}}

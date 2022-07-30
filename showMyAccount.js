@@ -1,4 +1,8 @@
+import adminPassChange from './adminPassChange.js'
 export default {
+  components: {
+    adminPassChange
+  },
   data() {
     return {
       name: "",
@@ -12,8 +16,8 @@ export default {
       emailWarning: "",
       phoneWarning: "",
 
-
-      disabled: true,
+      disabledForm: true,
+      openEditPassword: false,
       err: "",
     }
   },
@@ -30,9 +34,7 @@ export default {
         self.surname = data.surname;
         self.email = data.email;
         self.organisation = data.organisation;
-        self.phone = data.phone
-
-        self.err = this.responseText;
+        self.phone = data.phone;
       }
     }
     xhttp.open("GET", "getAdminDetails.php?q=" + window.sessionStorage.getItem("token"), true);
@@ -41,10 +43,40 @@ export default {
   },
   methods: {
     editForm(){
-      this.disabled = false;
+      this.disabledForm = false;
     },
     sendForm() {
-
+      if(!(this.nameWarning || this.surnameWarning || this.emailWarning )){
+        let updatedData = { token: window.sessionStorage.getItem("token"),
+                            name: this.name,
+                            surname: this.surname,
+                            email: this.email,
+                            phone: this.phone,
+                            organisation: this.organisation
+                            }
+        let obJson = JSON.stringify(updatedData);
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4) {
+            if(this.status == 200) {
+              console.log(this.responseText);
+            }
+          }
+        };
+       xhttp.open("POST", "updateAdminData.php", true);
+       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+       xhttp.send(obJson);
+       this.disabledForm = true;
+      }
+      else {
+        console.log("Nie można uaktualnić danych. Błędne dane.");
+      }
+    },
+    editPassword() {
+      this.openEditPassword = true;
+    },
+    closeEditPassword() {
+      this.openEditPassword = false;
     }
   },
   watch: {
@@ -86,28 +118,34 @@ export default {
   template:`
     <h2>Moje konto</h2>
     <form>
-      <fieldset :disabled="disabled">
+      <fieldset>
         Imię*:<br>
-        <input v-model="name" maxlength="20" id="name" > <label for="name">{{nameWarning}}</label>
+        <input v-model="name" maxlength="20" id="name" :disabled="disabledForm"> <label for="name">{{nameWarning}}</label>
         <br>
         Nazwisko*:<br>
-        <input v-model="surname" maxlength="25" id="surname"> <label for="surname">{{surnameWarning}}</label>
+        <input v-model="surname" maxlength="25" id="surname" :disabled="disabledForm"> <label for="surname">{{surnameWarning}}</label>
         <br>
         e-mail*:<br>
-        <input v-model="email" maxlength="254" id="email"> <label for="email">{{emailWarning}}</label>
+        <input v-model="email" maxlength="254" id="email" :disabled="disabledForm"> <label for="email">{{emailWarning}}</label>
         <br>
         Telefon:<br>
-        <input v-model="phone" maxlength="15" id="phone"> <label for="phone">{{phoneWarning}}</label>
+        <input v-model="phone" maxlength="15" id="phone" :disabled="disabledForm"> <label for="phone">{{phoneWarning}}</label>
         <br>
         Aeroklub/Organizacja:<br>
-        <textarea v-model="organisation" maxlength="255" id="org"></textarea> <label for="org" v-if="!disabled">Pozostało znaków: {{255 - organisation.length}}</label>
+        <textarea v-model="organisation" maxlength="255" id="org" :disabled="disabledForm"></textarea> <label for="org" v-if="!disabledForm">Pozostało znaków: {{255 - organisation.length}}</label>
         <br>
+        * Pola obowiązkowe<br>
+        <button v-if="disabledForm" @click.prevent="editForm">Edytuj dane</button>
+        <button v-if="!disabledForm" @click.prevent="sendForm">Zatwierdź</button>
       </fieldset>
-      <button v-if="disabled" @click.prevent="editForm">Edytuj dane</button>
-      <button v-if="!disabled" @click.prevent="sendForm">Zatwierdź</button>
+
     </form>
     <br>
-    * Pola obowiązkowe<br>
+    <button v-if="!openEditPassword" @click.prevent="editPassword">Zmiana hasła</button>
+    <button v-if="openEditPassword" @click.prevent="closeEditPassword">Zamknij formularz zmiany hasła</button>
+    <div v-if="openEditPassword">
+      <adminPassChange></adminPassChange>
+    </div>
     {{err}}
   `
 }

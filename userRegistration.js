@@ -138,37 +138,38 @@ export default {
   <div class="reg">
     <h1>Twoje dane zawodnika</h1>
     <form>
-      Nazwa użytkownika*:<br>
-      <input v-model="login" maxlength="20" id="login"> <label for="login">{{loginWarning}}</label>
-      <br><br>
+      <fieldset>
+        Nazwa użytkownika*:<br>
+        <input v-model="login" maxlength="20" id="login"> <label for="login">{{loginWarning}}</label>
+        <br><br>
 
-      Hasło*:<br>
-      <input v-model="pass" type="password" maxlength="20" id="pass"> <label for="pass">{{passWarning}}</label>
-      <br><br>
+        Hasło*:<br>
+        <input v-model="pass" type="password" maxlength="20" id="pass"> <label for="pass">{{passWarning}}</label>
+        <br><br>
 
-      Powtórz hasło*:<br>
-      <input v-model="pass2" type="password" maxlength="20" id="pass2"> <label for="pass2">{{pass2Warning}}</label>
-      <br><br>
+        Powtórz hasło*:<br>
+        <input v-model="pass2" type="password" maxlength="20" id="pass2"> <label for="pass2">{{pass2Warning}}</label>
+        <br><br>
 
-      Imię*:<br>
-      <input v-model="name" maxlength="20" id="name"> <label for="name">{{nameWarning}}</label>
-      <br><br>
+        Imię*:<br>
+        <input v-model="name" maxlength="20" id="name"> <label for="name">{{nameWarning}}</label>
+        <br><br>
 
-      Nazwisko*:<br>
-      <input v-model="surname" maxlength="25" id="surname"> <label for="surname">{{surnameWarning}}</label>
-      <br><br>
+        Nazwisko*:<br>
+        <input v-model="surname" maxlength="25" id="surname"> <label for="surname">{{surnameWarning}}</label>
+        <br><br>
 
-      Aeroklub/Organizacja*<br>
-      <textarea v-model="organisation" maxlength="255" id="org"></textarea> <label for="org">Pozostało znaków: {{255 - organisation.length}}</label>
-      <br>
+        Aeroklub/Organizacja*<br>
+        <textarea v-model="organisation" maxlength="255" id="org"></textarea> <label for="org">Pozostało znaków: {{255 - organisation.length}}</label>
+        <br>
 
-      Licencja*<br>
-      <input v-model="license" maxlength="12" id="license"> <label for="license">{{licenseWarning}}</label>
-      <br>
-
-      <br>
-      * Pola obowiązkowe.<br><br>
-      <input type="submit" @click.prevent="send">
+        Licencja*<br>
+        <input v-model="license" maxlength="12" id="license"> <label for="license">{{licenseWarning}}</label>
+        <br>
+        <br>
+        * Pola obowiązkowe.<br><br>
+        <input type="submit" @click.prevent="send">
+        </fieldset>
     </form>
   </div>
   `
