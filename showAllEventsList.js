@@ -28,20 +28,24 @@ export default {
 
   },
   template:`
-  <h1>Aktualne wydarzenia</h1><br>
-  <eventListElement v-for="item in list"
-    :eventId = "item.eventId"
-    :eventName = "item.eventName"
-    :place = "item.place"
-    :dateStart = "item.dateStart"
-    :timeStart = "item.timeStart"
-    :name = "item.name"
-    :surname = "item.surname"
-    :organisation = "item.organisation"
-    :dateStopRegistration = "item.dateStopRegistration"
-    :timeStopRegistration = "item.timeStopRegistration"
-
-  ></eventListElement>
+  <div class="eventList">
+  <h2>Aktualne wydarzenia</h2><br>
+    <div >
+      <eventListElement v-for="item in list"
+      :eventId = "item.eventId"
+      :eventName = "item.eventName"
+      :place = "item.place"
+      :dateStart = "item.dateStart"
+      :timeStart = "item.timeStart"
+      :name = "item.name"
+      :surname = "item.surname"
+      :organisation = "item.organisation"
+      :dateStopRegistration = "item.dateStopRegistration"
+      :timeStopRegistration = "item.timeStopRegistration"
+      >
+      </eventListElement>
+    </div>
+  </div>
   {{err}}
   `
 }

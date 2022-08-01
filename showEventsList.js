@@ -28,8 +28,8 @@ export default {
     <h2>Otwarte rejestracje</h2>
     <div v-for="item in list">
       <div class="event">
-        {{item.eventName}}<br>
-        Koniec rejestracji: {{item.dateStop}} {{item.timeStop}} <br>
+        <div class="title">{{item.eventName}}</div><br>
+        Koniec rejestracji: {{item.dateStop}} {{item.timeStop}} <br><br>
         <listElement
           :eventId="item.eventId"
           :eventName="item.eventName"

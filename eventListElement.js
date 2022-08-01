@@ -20,10 +20,10 @@ export default {
     "organisation", "dateStopRegistration", "timeStopRegistration"],
   template: `
     <div class="event">
-      {{eventName}}<br>
+      <div class="title">{{eventName}}</div><br>
       Miejsce: {{place}} Rozpoczęcie: {{dateStart}} {{timeStart}}<br>
       Koniec rejstracji: {{dateStopRegistration}} {{timeStopRegistration}}<br>
-      Organizator: {{name}} {{surname}}, {{organisation}}<br>
+      Organizator: {{name}} {{surname}}, {{organisation}}<br><br>
       <button v-if="!showDetails" @click="openEvent">Rozwiń szczegóły</button>
       <eventElementDetails v-if="showDetails" :eventId="eventId"></eventElementDetails><br>
       <button v-if="showDetails" @click="hideEvent">Zwiń szczegóły</button>

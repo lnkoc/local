@@ -73,10 +73,10 @@ export default {
       <button @click="openRegistration">Rejestracja organizatora</button><br>
     </div>
   </div>
-  <div v-if="createAdmin">
+  <div v-if="createAdmin" class="admin">
     <adminReg @created="createAdmin=false; logged=false"></adminReg>
   </div>
-  <div v-if=logged>
+  <div v-if=logged class="admin">
     <menuItems @logout="returnToMain"></menuItems>
   </div>
   `

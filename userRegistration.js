@@ -54,6 +54,10 @@ export default {
         else {
           console.log("nie można dodać użytkownika");
         }
+      },
+      abort() {
+        window.sessionStorage.clear();
+        this.$emit("created");
       }
     },
   watch: {
@@ -168,7 +172,7 @@ export default {
         <br>
         <br>
         * Pola obowiązkowe.<br><br>
-        <input type="submit" @click.prevent="send">
+        <input type="submit" @click.prevent="send"> <button @click.prevent="abort">Anuluj</button>
         </fieldset>
     </form>
   </div>

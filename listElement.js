@@ -51,10 +51,10 @@ export default {
   template:`
   <div>
     <div>
-      <button v-if="!showElement" @click="openEvent">Rozwiń</button><br>
+      <button v-if="!showElement" @click="openEvent">Pokaż</button><br>
     </div>
     <div v-if="showElement">
-      Lista zarejestrowanych zawodników:
+      Lista zarejestrowanych zawodników:<br><br>
       <table>
         <tr>
           <th>Kategoria</th>
@@ -71,12 +71,12 @@ export default {
           <th>{{item.license}}</th>
         </tr>
       </table><br>
-      <button v-if="showElement" @click="closeEvent">Zwiń</button>
+      <button v-if="showElement" @click="closeEvent">Zamknij</button>
       <button v-if="showElement && !showDetails" @click="showEventDetails">Pokaż szczegóły</button><br>
-      <div v-if="showDetails">
+      <div v-if="showDetails"><br>
         Miejse: {{details.place}}<br>
         Opis: {{details.description}}<br>
-        Data i czas rozpoczęcia: {{details.dateStart}} {{details.timeStart}}<br>
+        Data i czas rozpoczęcia: {{details.dateStart}} {{details.timeStart}}<br><br>
         <button @click="hideDetails">Zamknij szczegóły</button>
       </div>
       {{err}}

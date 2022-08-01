@@ -15,12 +15,12 @@
     <body>
         <div id="apka">
 
-          <div class="admin" v-if="!logged && !createUser">
-            <button v-if="!enableAdminPanel" @click="openAdminPanel">Panel Organizatora</button>
+          <div v-if="!logged && !createUser">
+            <button class="adminButton" v-if="!enableAdminPanel" @click="openAdminPanel">Panel Organizatora</button>
             <admin-panel v-if="enableAdminPanel" @logout="disableAdminPanel"></admin-panel><br>
           </div>
 
-          <div v-if="!logged && !createUser && !enableAdminPanel">
+          <div class="user" v-if="!logged && !createUser && !enableAdminPanel">
             <div>
               <h1>Logowanie zawodnika</h1><br>
               Zawodnik:<br>
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div v-if="createUser">
+          <div class="user" v-if="createUser">
             <add-user @created="createUser=false; logged=false"></add-user>
           </div>
 

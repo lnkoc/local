@@ -22,7 +22,7 @@ export default {
     <button>Moje konto</button>
     <button @click="logout">Wyloguj</button>
   </div>
-  <div>
+  <div class="userEvents">
     <showAllEvents></showAllEvents>
   </div>
 
