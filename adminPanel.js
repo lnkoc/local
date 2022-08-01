@@ -61,23 +61,26 @@ export default {
 
   },
   template:`
-  <div v-if="!createAdmin && !logged" class="admin">
-    <div>
-      <h1>Logowanie</h1><br>
-      Organizator:<br>
-      <input v-model="login"> {{loginHint}}<br>
-      Hasło:<br>
-      <input v-model="password" type="password"> {{passHint}}<br><br>
-      <button @click="adminLogin" >Zaloguj</button><br><br>
-      <h1>Utwórz konto organizatora:</h1>
-      <button @click="openRegistration">Rejestracja organizatora</button><br>
+
+    <button v-if="!createAdmin && !logged" class="switchAccountType" @click.prevent="returnToMain">Panel użytkownika</button>
+    <div v-if="!createAdmin && !logged" class="admin">
+      <div>
+        <h1>Logowanie organizatora</h1><br>
+        Organizator:<br>
+        <input v-model="login"> {{loginHint}}<br><br>
+        Hasło:<br>
+        <input v-model="password" type="password"> {{passHint}}<br><br>
+        <button @click="adminLogin" >Zaloguj</button><br><br>
+        <h1>Utwórz konto organizatora:</h1>
+        <button @click="openRegistration">Rejestracja organizatora</button><br>
+      </div>
     </div>
-  </div>
-  <div v-if="createAdmin" class="admin">
-    <adminReg @created="createAdmin=false; logged=false"></adminReg>
-  </div>
-  <div v-if=logged class="admin">
-    <menuItems @logout="returnToMain"></menuItems>
-  </div>
+    <div v-if="createAdmin" class="admin">
+      <adminReg @created="createAdmin=false; logged=false"></adminReg>
+    </div>
+    <div v-if=logged>
+      <menuItems @logout="returnToMain"></menuItems>
+    </div>
+
   `
 }
