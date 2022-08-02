@@ -16,7 +16,7 @@
         <div id="apka">
 
           <div v-if="!logged && !createUser">
-            <button class="switchAccountType" v-if="!enableAdminPanel" @click="openAdminPanel">Panel Organizatora</button>
+            <button class="adminType" v-if="!enableAdminPanel" @click="openAdminPanel">Panel Organizatora</button>
             <admin-panel v-if="enableAdminPanel" @logout="disableAdminPanel"></admin-panel>
           </div>
 
@@ -27,12 +27,12 @@
               <input v-model="user"> {{userHint}}<br><br>
               Hasło:<br>
               <input v-model="password" type="password"> {{passHint}}<br><br>
-              <button @click="userLogin">Zaloguj</button>
+              <button class="inputUserButton" @click="userLogin">Zaloguj</button>
             </div>
 
             <div>
               <h1>Utwórz konto zawodnika</h1>
-              <button @click="openUserRegistration">Rejestracja zawodnika</button><br>
+              <button class="inputUserButton" @click="openUserRegistration">Rejestracja</button><br>
             </div>
           </div>
 

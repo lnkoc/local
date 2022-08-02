@@ -79,8 +79,8 @@ export default {
       Powtórz nowe hasło*:<br>
       <input v-model="newPassword2" type="password" maxlength="20" id="newPass2" :disabled="disabledForm"> <label for="newPass2">{{newPass2Warning}}</label><br>
       * Pola obowiązkowe<br>
-      <button v-if="disabledForm" @click.prevent="editForm">Edytuj</button>
-      <button v-if="!disabledForm" @click.prevent="confirm">Zatwierdź</button>
+      <button class="inputAdminButton" v-if="disabledForm" @click.prevent="editForm">Edytuj</button>
+      <button class="inputAdminButton" v-if="!disabledForm" @click.prevent="confirm">Zatwierdź</button>
     </fieldset>
 
   </form>

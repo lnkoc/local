@@ -172,7 +172,7 @@ export default {
         <br>
         <br>
         * Pola obowiązkowe.<br><br>
-        <input type="submit" @click.prevent="send"> <button @click.prevent="abort">Anuluj</button>
+        <input class="inputButton" type="submit" @click.prevent="send"> <button class="inputButton" @click.prevent="abort">Anuluj</button>
         </fieldset>
     </form>
   </div>

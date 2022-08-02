@@ -17,7 +17,7 @@ export default {
     }
   },
   template:`
-  <div class="menuItems">
+  <div class="menuUserItems">
     <button>Wydarzenia</button>
     <button>Moje konto</button>
     <button @click="logout">Wyloguj</button>

@@ -64,7 +64,7 @@ export default {
       Informacje: <br>{{info}}<br><br>
       <div v-for="item in registired"> Zarejestrowano w kategorii {{item}}
       </div><br>
-      <button v-for="item in categories" v-on:click="register(item)">Zarejestruj w kategorii {{item}}</button>
+      <button class="eventButton" v-for="item in categories" v-on:click="register(item)">Zarejestruj w kategorii {{item}}</button>
     </div>
     {{err}}
   `

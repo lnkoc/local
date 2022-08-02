@@ -135,14 +135,14 @@ export default {
         <textarea v-model="organisation" maxlength="255" id="org" :disabled="disabledForm"></textarea> <label for="org" v-if="!disabledForm">Pozostało znaków: {{255 - organisation.length}}</label>
         <br>
         * Pola obowiązkowe<br>
-        <button v-if="disabledForm" @click.prevent="editForm">Edytuj dane</button>
-        <button v-if="!disabledForm" @click.prevent="sendForm">Zatwierdź</button>
+        <button class="inputAdminButton" v-if="disabledForm" @click.prevent="editForm">Edytuj dane</button>
+        <button class="inputAdminButton" v-if="!disabledForm" @click.prevent="sendForm">Zatwierdź</button>
       </fieldset>
 
     </form>
     <br>
-    <button v-if="!openEditPassword" @click.prevent="editPassword">Zmiana hasła</button>
-    <button v-if="openEditPassword" @click.prevent="closeEditPassword">Zamknij formularz zmiany hasła</button>
+    <button class="inputAdminButton" v-if="!openEditPassword" @click.prevent="editPassword">Zmiana hasła</button>
+    <button class="inputAdminButton" v-if="openEditPassword" @click.prevent="closeEditPassword">Zamknij formularz zmiany hasła</button>
     <div v-if="openEditPassword">
       <adminPassChange></adminPassChange>
     </div>

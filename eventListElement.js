@@ -24,9 +24,9 @@ export default {
       Miejsce: {{place}} Rozpoczęcie: {{dateStart}} {{timeStart}}<br>
       Koniec rejstracji: {{dateStopRegistration}} {{timeStopRegistration}}<br>
       Organizator: {{name}} {{surname}}, {{organisation}}<br><br>
-      <button v-if="!showDetails" @click="openEvent">Rozwiń szczegóły</button>
+      <button class="eventButton" v-if="!showDetails" @click="openEvent">Rozwiń szczegóły</button>
       <eventElementDetails v-if="showDetails" :eventId="eventId"></eventElementDetails><br>
-      <button v-if="showDetails" @click="hideEvent">Zwiń szczegóły</button>
+      <button class="eventButton" v-if="showDetails" @click="hideEvent">Zwiń szczegóły</button>
     </div><br>
   `
 }

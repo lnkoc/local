@@ -62,7 +62,7 @@ export default {
   },
   template:`
 
-    <button v-if="!createAdmin && !logged" class="switchAccountType" @click.prevent="returnToMain">Panel użytkownika</button>
+    <button v-if="!createAdmin && !logged" class="userType" @click.prevent="returnToMain">Panel użytkownika</button>
     <div v-if="!createAdmin && !logged" class="admin">
       <div>
         <h1>Logowanie organizatora</h1><br>
@@ -70,9 +70,9 @@ export default {
         <input v-model="login"> {{loginHint}}<br><br>
         Hasło:<br>
         <input v-model="password" type="password"> {{passHint}}<br><br>
-        <button @click="adminLogin" >Zaloguj</button><br><br>
+        <button class="inputAdminButton" @click="adminLogin" >Zaloguj</button><br><br>
         <h1>Utwórz konto organizatora:</h1>
-        <button @click="openRegistration">Rejestracja organizatora</button><br>
+        <button class="inputAdminButton" @click="openRegistration">Rejestracja</button><br>
       </div>
     </div>
     <div v-if="createAdmin" class="admin">

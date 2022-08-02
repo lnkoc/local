@@ -41,7 +41,7 @@ export default {
   },
 
   template:`
-    <div class="menuItems">
+    <div class="menuAdminItems">
       <button @click="addEvent">Dodaj wydarzenie</button>
       <button @click="showList">Otwarte rejestracje</button>
       <button @click="showClosedList">Zamknięte rejestracje</button>

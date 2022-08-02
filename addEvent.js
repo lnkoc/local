@@ -123,11 +123,11 @@ export default {
     <form>
       <fieldset>
         <h2>Nazwa wydarzenia:</h2>
-        <textarea v-model="eventName" maxlength="500"></textarea><br>
+        <textarea v-model="eventName" maxlength="500" rows="7" cols="80"></textarea><br>
         {{nameWarning}}<br>
 
         <h2>Miejsce:</h2>
-        <textarea v-model="place" maxlength="500"></textarea><br>
+        <textarea v-model="place" maxlength="500" rows="7" cols="80"></textarea><br>
         {{placeWarning}}<br>
 
         <h2>Kategorie:</h2>
@@ -140,7 +140,7 @@ export default {
         <br>
 
         <h2>Dodatkowe informacje:</h2>
-        <textarea v-model="description" maxlength="500"></textarea><br>
+        <textarea v-model="description" maxlength="500" rows="7" cols="80"></textarea><br>
         {{descriptionWarning}}<br>
 
         <h2>Data i godzina rozpoczęcia wydarzenia:</h2>
@@ -149,7 +149,7 @@ export default {
         <h2>Zakończenie rejestracji:</h2>
         <input v-model="dateStopRegistration" type="date"> <input v-model="timeStopRegistration" type="time"><br>
         <br>
-        <input type="submit" @click.prevent="addEvent">
+        <input class="inputAdminButton" type="submit" @click.prevent="addEvent">
       </fieldset>
     </form>
     <br>
