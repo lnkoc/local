@@ -31,6 +31,7 @@ body {
 .main {
   background-color: lightyellow;
   padding: 10px;
+  padding-top: 50px;
 }
 .event {
   padding: 20px;
@@ -45,7 +46,6 @@ body {
 
 #content {
   padding-top: 50px;
-  padding: 40px;
 }
 
 #apka {
@@ -57,11 +57,11 @@ body {
 }
 
 .menuItems {
-  position: sticky;
-  background-color: inherit;
-  border-radius: 10px;
+  position: fixed;
+  width: 720px;
+  background-color: #008DBA;
   top: 0px;
-  margin-left: 1px;
+
 }
 
 .menuItems button {
@@ -70,5 +70,5 @@ body {
   padding: 15px 24px;
   text-align: center;
   border: 2px solid #008CBD;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }

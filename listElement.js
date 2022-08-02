@@ -74,9 +74,9 @@ export default {
       <button v-if="showElement" @click="closeEvent">Zamknij</button>
       <button v-if="showElement && !showDetails" @click="showEventDetails">Pokaż szczegóły</button><br>
       <div v-if="showDetails"><br>
-        Miejse: {{details.place}}<br>
-        Opis: {{details.description}}<br>
-        Data i czas rozpoczęcia: {{details.dateStart}} {{details.timeStart}}<br><br>
+        Miejse: <br> {{details.place}}<br>
+        Opis: <br> {{details.description}}<br>
+        Data i czas rozpoczęcia: <br> {{details.dateStart}} {{details.timeStart}}<br><br>
         <button @click="hideDetails">Zamknij szczegóły</button>
       </div>
       {{err}}
