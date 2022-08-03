@@ -73,11 +73,11 @@ export default {
   <form>
     <fieldset>
       Stare hasło*:<br>
-      <input v-model="oldPassword" type="password" maxlength="20" id="oldPass" :disabled="disabledForm"> <label for="oldPass">{{oldPassWarning}}</label><br>
+      <input class="input" v-model="oldPassword" type="password" maxlength="20" id="oldPass" :disabled="disabledForm"> <label for="oldPass">{{oldPassWarning}}</label><br>
       Nowe hasło*:<br>
-      <input v-model="newPassword" type="password" maxlength="20" id="newPass" :disabled="disabledForm"> <label for="newPass">{{newPassWarning}}</label><br>
+      <input class="input" v-model="newPassword" type="password" maxlength="20" id="newPass" :disabled="disabledForm"> <label for="newPass">{{newPassWarning}}</label><br>
       Powtórz nowe hasło*:<br>
-      <input v-model="newPassword2" type="password" maxlength="20" id="newPass2" :disabled="disabledForm"> <label for="newPass2">{{newPass2Warning}}</label><br>
+      <input class="input" v-model="newPassword2" type="password" maxlength="20" id="newPass2" :disabled="disabledForm"> <label for="newPass2">{{newPass2Warning}}</label><br>
       * Pola obowiązkowe<br>
       <button class="inputAdminButton" v-if="disabledForm" @click.prevent="editForm">Edytuj</button>
       <button class="inputAdminButton" v-if="!disabledForm" @click.prevent="confirm">Zatwierdź</button>

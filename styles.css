@@ -5,6 +5,10 @@ body {
   padding: 40px;
 }
 
+.input {
+  padding: 10px 10px;
+}
+
 .admin {
   background-color: white;
   padding: 40px;
@@ -116,7 +120,7 @@ body {
   border: none;
   background-color: #008CBA;
   color: white;
-  width: 185px;
+  width: 200px;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -127,7 +131,7 @@ body {
   border: none;
   background-color: #f44336;
   color: white;
-  width: 185px;
+  width: 200px;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;

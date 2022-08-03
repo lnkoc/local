@@ -67,9 +67,9 @@ export default {
       <div>
         <h1>Logowanie organizatora</h1><br>
         Organizator:<br>
-        <input v-model="login"> {{loginHint}}<br><br>
+        <input class="input" v-model="login"> {{loginHint}}<br><br>
         Hasło:<br>
-        <input v-model="password" type="password"> {{passHint}}<br><br>
+        <input class="input" v-model="password" type="password"> {{passHint}}<br><br>
         <button class="inputAdminButton" @click="adminLogin" >Zaloguj</button><br><br>
         <h1>Utwórz konto organizatora:</h1>
         <button class="inputAdminButton" @click="openRegistration">Rejestracja</button><br>

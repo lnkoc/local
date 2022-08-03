@@ -148,40 +148,40 @@ export default {
     <form>
     <fieldset>
         Nazwa użytkownika*:<br>
-        <input v-model="login" maxlength="20" id="login"> <label for="login">{{loginWarning}}</label>
+        <input class="input" v-model="login" maxlength="20" id="login"> <label for="login">{{loginWarning}}</label>
         <br><br>
 
         Hasło*:<br>
-        <input v-model="pass" type="password" maxlength="20" id="pass"> <label for="pass">{{passWarning}}</label>
+        <input class="input" v-model="pass" type="password" maxlength="20" id="pass"> <label for="pass">{{passWarning}}</label>
         <br><br>
 
         Powtórz hasło*:<br>
-        <input v-model="pass2" type="password" maxlength="20" id="pass2"> <label for="pass2">{{pass2Warning}}</label>
+        <input class="input" v-model="pass2" type="password" maxlength="20" id="pass2"> <label for="pass2">{{pass2Warning}}</label>
         <br><br>
 
         Imię*:<br>
-        <input v-model="name" maxlength="20" id="name"> <label for="name">{{nameWarning}}</label>
+        <input class="input" v-model="name" maxlength="20" id="name"> <label for="name">{{nameWarning}}</label>
         <br><br>
 
         Nazwisko*:<br>
-        <input v-model="surname" maxlength="25" id="surname"> <label for="surname">{{surnameWarning}}</label>
+        <input class="input" v-model="surname" maxlength="25" id="surname"> <label for="surname">{{surnameWarning}}</label>
         <br><br>
 
         e-mail*:<br>
-        <input v-model="email" maxlength="254" id="email"> <label for="email">{{emailWarning}}</label>
+        <input class="input" v-model="email" maxlength="254" id="email"> <label for="email">{{emailWarning}}</label>
         <br><br>
 
         Telefon:<br>
-        <input v-model="phone" maxlength="15" id="phone"> <label for="phone">{{phoneWarning}}</label>
+        <input class="input" v-model="phone" maxlength="15" id="phone"> <label for="phone">{{phoneWarning}}</label>
         <br><br>
 
         Aeroklub/Organizacja<br>
-        <textarea v-model="organisation" maxlength="255" id="org"></textarea> <label for="org">Pozostało znaków: {{255 - organisation.length}}</label>
+        <textarea class="input" v-model="organisation" maxlength="255" id="org"></textarea> <label for="org">Pozostało znaków: {{255 - organisation.length}}</label>
         <br>
 
         <br>
         * Pola obowiązkowe.<br><br>
-        <input type="submit" @click.prevent="send"> <button @click.prevent="abort">Anuluj</button>
+        <input class="inputAdminButton" type="submit" @click.prevent="send"> <button class="inputAdminButton" @click.prevent="abort">Anuluj</button>
       </fieldset>
     </form>
   </div>

@@ -120,19 +120,19 @@ export default {
     <form>
       <fieldset>
         Imię*:<br>
-        <input v-model="name" maxlength="20" id="name" :disabled="disabledForm"> <label for="name">{{nameWarning}}</label>
+        <input class="input" v-model="name" maxlength="20" id="name" :disabled="disabledForm"> <label for="name">{{nameWarning}}</label>
         <br>
         Nazwisko*:<br>
-        <input v-model="surname" maxlength="25" id="surname" :disabled="disabledForm"> <label for="surname">{{surnameWarning}}</label>
+        <input class="input" v-model="surname" maxlength="25" id="surname" :disabled="disabledForm"> <label for="surname">{{surnameWarning}}</label>
         <br>
         e-mail*:<br>
-        <input v-model="email" maxlength="254" id="email" :disabled="disabledForm"> <label for="email">{{emailWarning}}</label>
+        <input class="input" v-model="email" maxlength="254" id="email" :disabled="disabledForm"> <label for="email">{{emailWarning}}</label>
         <br>
         Telefon:<br>
-        <input v-model="phone" maxlength="15" id="phone" :disabled="disabledForm"> <label for="phone">{{phoneWarning}}</label>
+        <input class="input" v-model="phone" maxlength="15" id="phone" :disabled="disabledForm"> <label for="phone">{{phoneWarning}}</label>
         <br>
         Aeroklub/Organizacja:<br>
-        <textarea v-model="organisation" maxlength="255" id="org" :disabled="disabledForm"></textarea> <label for="org" v-if="!disabledForm">Pozostało znaków: {{255 - organisation.length}}</label>
+        <textarea class="input" v-model="organisation" maxlength="255" id="org" :disabled="disabledForm"></textarea> <label for="org" v-if="!disabledForm">Pozostało znaków: {{255 - organisation.length}}</label>
         <br>
         * Pola obowiązkowe<br>
         <button class="inputAdminButton" v-if="disabledForm" @click.prevent="editForm">Edytuj dane</button>
