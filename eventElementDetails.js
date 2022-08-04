@@ -31,7 +31,7 @@ export default {
       xhttp.send();
     }
   },
-  mounted() {
+  created() {
     const xhttp = new XMLHttpRequest();
     let self = this;
     xhttp.onload = function () {

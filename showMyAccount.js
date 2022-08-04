@@ -21,7 +21,7 @@ export default {
       err: "",
     }
   },
-  mounted() {
+  created() {
     let self = this;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {

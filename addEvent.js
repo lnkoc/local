@@ -72,7 +72,7 @@ export default {
     }
 
   },
-  mounted() {
+  created() {
     let self = this;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
