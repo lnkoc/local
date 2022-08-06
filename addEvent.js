@@ -18,6 +18,7 @@ export default {
       descriptionWarning: ""
     }
   },
+  emits:['eventCreated'],
   methods: {
     addEvent() {
 
@@ -27,9 +28,6 @@ export default {
         this.timeStart.length != 0 &&
         this.dateStopRegistration != 0 &&
         this.timeStopRegistration != 0) {
-
-        console.log(this.dateStart);
-        console.log(this.timeStart);
 
         let data = {
           token: window.sessionStorage.getItem("token"),
@@ -60,14 +58,10 @@ export default {
         xhttp.open("POST", "addEvent.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(obJson);
-
-        //TODO DOPISAĆ OBSŁUGĘ I PRZENIEŚĆ DO MOICH WYDARZEŃ
         this.$emit("eventCreated");
       }
       else {
-        //TODO dpisać czego brakuje
-        //TODO DOPISAĆ PRZYCISK ANULUJ
-        console.log("rejestracja wstrzymana");
+        console.log("rejestracja wydarzenia wstrzymana");
       }
     }
 

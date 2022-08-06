@@ -18,6 +18,9 @@ export default {
       }
       else {
           self.list = JSON.parse(this.responseText);
+          for(let item in self.list) {
+            self.list[item].dateStop = self.list[item].dateStop.split('-').reverse().join('-');
+          }
       }
     }
     xhttp.open("GET", "getEventsList.php?q=" + window.sessionStorage.getItem("token"), true);

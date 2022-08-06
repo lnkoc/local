@@ -9,7 +9,7 @@ export default {
       err: ""
     }
   },
-  mounted() {
+  created() {
     console.log("Lista dostępnych wydarzeń");
     const xhttp = new XMLHttpRequest();
     let self = this;
@@ -19,6 +19,10 @@ export default {
       }
       else {
         self.list = JSON.parse(this.responseText);
+        for(let item in self.list) {
+          self.list[item].dateStart = self.list[item].dateStart.split('-').reverse().join('-');
+          self.list[item].dateStopRegistration = self.list[item].dateStopRegistration.split('-').reverse().join('-');
+        }
   //      self.err = JSON.parse(this.responseText);
   //      console.log(this.responseText);
       }

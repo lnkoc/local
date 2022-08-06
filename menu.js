@@ -12,32 +12,34 @@ export default {
   },
   data() {
     return {
-      showAddEventForm: false,
-      showEventsList: false,
-      currentMenuItem: "showEventsList"
+      currentMenuItem: "showEventsList",
+      addEventForm: false
     }
   },
   emits:['logout'],
   methods: {
     addEvent() {
+      this.addEventForm = true;
       this.currentMenuItem = "addEvent";
     },
     showList() {
+      this.addEventForm = false;
       this.currentMenuItem = "showEventsList";
     },
     showClosedList() {
+      this.addEventForm = false;
       this.currentMenuItem = "showClosedEventsList";
     },
     myAccount() {
+      this.addEventForm = false;
       this.currentMenuItem = "showMyAccount";
     },
     logOut() {
+      this.addEventForm = false;
       window.sessionStorage.clear();
       this.$emit("logout");
     },
-    created() {
-      this.showAddEventForm = false;
-    },
+
   },
 
   template:`
@@ -49,6 +51,7 @@ export default {
       <button @click="logOut">Wyloguj</button>
     </div>
     <div class="main">
+      <addEvent v-if="addEventForm" @eventCreated="showList"></addEvent>
       <component :is="currentMenuItem"></component>
     </div>
   `

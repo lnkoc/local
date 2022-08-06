@@ -18,39 +18,15 @@ export default {
       }
       else {
         self.list = JSON.parse(this.responseText);
+        for(let item in self.list) {
+          self.list[item].dateStart = self.list[item].dateStart.split('-').reverse().join('-');
+          self.list[item].dateStop = self.list[item].dateStop.split('-').reverse().join('-');
+        }
       }
     }
     xhttp.open("GET", "getClosedEventsList.php?q=" + window.sessionStorage.getItem("token"), true);
     xhttp.send();
   },
-  // methods: {
-  //   // showParticipants() {
-  //   //   this.showElement = true;
-  //   //   const xhttp = new XMLHttpRequest();
-  //   //   let self = this;
-  //   //   xhttp.onload = function () {
-  //   //     if (this.responseText == "false") {
-  //   //       console.log("Sesja wygasła");
-  //   //     }
-  //   //     else {
-  //   //       self.participants = JSON.parse(this.responseText);
-  //   //     }
-  //   //   }
-  //   //   xhttp.open("GET", "getEventParticipants.php?q=" + window.sessionStorage.getItem("token") + "&d=" + this.eventId, true);
-  //   //   xhttp.send();
-  //   // },
-  //   // deleteEvent(item) {
-  //     // let self = this;
-  //     // const xhttp = new XMLHttpRequest();
-  //     // xhttp.open("GET", "deleteEvent.php?q=" + window.sessionStorage.getItem("token") + "&d=" + item.eventId, true);
-  //     // xhttp.onload = function () {
-  //     //   self.err = this.responseText;
-  //     //   let index = self.list.indexOf(item);
-  //     //   self.list.splice(index, 1);
-  //     // }
-  //     // xhttp.send();
-  //   // }
-  // },
   template:`
     <h2>Zamknięte rejestracje</h2>
     <div v-for="item in list">

@@ -34,6 +34,7 @@ export default {
         }
         else {
           self.details = JSON.parse(this.responseText);
+          self.details.dateStart = self.details.dateStart.split('-').reverse().join('-');
           self.showDetails = true;
 //          self.err = this.responseText;
         }
