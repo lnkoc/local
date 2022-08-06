@@ -52,7 +52,7 @@ export default {
     </div>
     <div class="main">
       <addEvent v-if="addEventForm" @eventCreated="showList"></addEvent>
-      <component :is="currentMenuItem"></component>
+      <component :is="currentMenuItem" v-if="!addEventForm"></component>
     </div>
   `
 }
