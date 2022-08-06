@@ -55,22 +55,24 @@ export default {
     </div>
     <div v-if="showElement">
       Lista zarejestrowanych zawodników:<br><br>
-      <table>
+      <div v-for="item in participants">
+      <div class="tableHeader">{{item.class}}</div>
+      <table class="usersTable">
         <tr>
-          <th>Kategoria</th>
-          <th>Imię</th>
-          <th>Nazwisko</th>
-          <th>Organizacja</th>
-          <th>Licencja</th>
+          <th class="tableHeader">Imię</th>
+          <th class="tableHeader">Nazwisko</th>
+          <th class="tableHeader">Organizacja</th>
+          <th class="tableHeader">Licencja</th>
         </tr>
-        <tr v-for="item in participants">
-          <th>{{item.category}}</th>
-          <th>{{item.name}}</th>
-          <th>{{item.surname}}</th>
-          <th>{{item.organisation}}</th>
-          <th>{{item.license}}</th>
+        <tr v-for="person in item.users">
+          <th>{{person.name}}</th>
+          <th>{{person.surname}}</th>
+          <th>{{person.organisation}}</th>
+          <th>{{person.license}}</th>
         </tr>
       </table><br>
+      </div>
+
       <button class="eventButton" v-if="showElement" @click="closeEvent">Zamknij</button>
       <button class="eventButton" v-if="showElement && !showDetails" @click="showEventDetails">Szczegóły</button><br>
       <div v-if="showDetails"><br>

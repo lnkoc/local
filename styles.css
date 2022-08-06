@@ -147,3 +147,19 @@ body {
   text-align: center;
   text-decoration: none;
 }
+
+.tableHeader {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+
+table, th, td {
+  padding: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-weight: normal;
+  word-wrap: break-word;
+}
