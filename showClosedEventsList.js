@@ -20,7 +20,6 @@ export default {
         self.list = JSON.parse(this.responseText);
         for(let item in self.list) {
           self.list[item].dateStart = self.list[item].dateStart.split('-').reverse().join('-');
-          self.list[item].dateStop = self.list[item].dateStop.split('-').reverse().join('-');
         }
       }
     }
@@ -41,7 +40,6 @@ export default {
           :dateStop="item.dateStop"
           :timeStop="item.timeStop">
         </listElement>
-<!---      <button @click="deleteEvent(item)">Usuń wydarzenie</button> --->
       </div>
       <br>
     </div>
